@@ -1,0 +1,1147 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="東瀛華族グループ - 東西をつなぐ、未来を創る | Toeikazoku Group">
+  <title>東瀛華族グループ | Toeikazoku Group</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg viewBox='0 0 44 44' xmlns='http://www.w3.org/2000/svg'%3E%3Crect width='44' height='44' rx='3' fill='%231a3a2e'/%3E%3Crect x='1.5' y='1.5' width='41' height='41' rx='2.5' fill='none' stroke='%23c4a882' stroke-width='2'/%3E%3Crect x='4.5' y='4.5' width='35' height='35' rx='1.5' fill='none' stroke='%23c4a882' stroke-width='0.8'/%3E%3Cline x1='13' y1='10' x2='31' y2='10' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round'/%3E%3Cline x1='22' y1='10' x2='22' y2='35' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round'/%3E%3Cellipse cx='22' cy='19.5' rx='7' ry='5' fill='%231a3a2e' stroke='%23c4a882' stroke-width='2'/%3E%3Cline x1='13' y1='19.5' x2='31' y2='19.5' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round'/%3E%3Cline x1='22' y1='14' x2='22' y2='25' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round'/%3E%3Cpath d='M22 28 Q16.5 31.5 13 35' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round' fill='none'/%3E%3Cpath d='M22 28 Q27.5 31.5 31 35' stroke='%23c4a882' stroke-width='2.2' stroke-linecap='round' fill='none'/%3E%3C/svg%3E">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #1a3a2e;
+      --navy-light: #2d5a3d;
+      --gold:       #c4a882;
+      --gold-light: #d4bfa0;
+      --off-white:  #f5f2eb;
+      --text-dark:  #1a1a1a;
+      --text-mid:   #5a5a5a;
+      --white:      #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic Medium",
+                   "Meiryo", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text-dark);
+      background: var(--white);
+      line-height: 1.75;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 1000;
+      background: rgba(13, 31, 60, 0.96);
+      backdrop-filter: blur(10px);
+      height: 68px;
+      padding: 0 6%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+      transition: box-shadow 0.3s;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      color: var(--gold);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+    }
+
+    .logo-mark {
+      flex-shrink: 0;
+      width: 38px; height: 38px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 1.8rem;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.84rem;
+      letter-spacing: 0.05em;
+      transition: color 0.2s;
+    }
+    nav a:hover { color: var(--gold); }
+
+    .lang-switch {
+      display: flex;
+      gap: 5px;
+      margin-left: 1.2rem;
+    }
+
+    .lang-btn {
+      background: transparent;
+      border: 1px solid rgba(201,168,76,0.4);
+      color: rgba(255,255,255,0.65);
+      padding: 4px 11px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 0.73rem;
+      font-family: inherit;
+      letter-spacing: 0.04em;
+      transition: all 0.2s;
+    }
+    .lang-btn:hover,
+    .lang-btn.active {
+      background: var(--gold);
+      border-color: var(--gold);
+      color: var(--navy);
+      font-weight: 700;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      padding: 4px;
+    }
+    .hamburger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: white;
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
+    .mobile-menu {
+      display: none;
+      position: fixed;
+      top: 68px;
+      left: 0; right: 0;
+      background: var(--navy);
+      padding: 1.5rem 6%;
+      z-index: 999;
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid rgba(201,168,76,0.2);
+    }
+    .mobile-menu.open { display: flex; }
+
+    .mobile-menu a {
+      color: rgba(255,255,255,0.82);
+      text-decoration: none;
+      font-size: 0.95rem;
+      padding: 0.85rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: var(--gold); }
+
+    .mobile-lang {
+      display: flex;
+      gap: 8px;
+      padding: 1.2rem 0 0.5rem;
+    }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: #0c1f16;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      padding: 110px 6% 80px;
+    }
+
+    .hero-slide {
+      position: absolute;
+      inset: 0;
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(100%);
+      opacity: 0;
+      transition: opacity 1.8s ease;
+      z-index: 0;
+    }
+    .hero-slide.active { opacity: 1; }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,20,14,0.42);
+      z-index: 1;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      width: 700px; height: 700px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(196,168,130,0.08) 0%, transparent 65%);
+      top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    #hero::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(196,168,130,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(196,168,130,0.04) 1px, transparent 1px);
+      background-size: 64px 64px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      max-width: 820px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      border: 1px solid rgba(201,168,76,0.5);
+      color: var(--gold);
+      padding: 6px 22px;
+      border-radius: 20px;
+      font-size: 0.73rem;
+      letter-spacing: 0.2em;
+      margin-bottom: 2rem;
+    }
+
+    .hero-title {
+      font-size: clamp(2rem, 5vw, 3.8rem);
+      color: var(--white);
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      line-height: 1.25;
+      margin-bottom: 1.2rem;
+    }
+    .hero-title span { color: var(--gold); }
+
+    .hero-sub {
+      font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+      color: rgba(255,255,255,0.62);
+      letter-spacing: 0.1em;
+      margin-bottom: 3rem;
+    }
+
+    .hero-scroll {
+      display: inline-block;
+      color: rgba(255,255,255,0.35);
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .hero-scroll:hover { color: var(--gold); }
+    .hero-scroll::after {
+      content: '';
+      display: block;
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, rgba(255,255,255,0.25), transparent);
+      margin: 10px auto 0;
+    }
+
+    /* ── SHARED SECTION ── */
+    section { padding: 96px 6%; }
+
+    .container { max-width: 1120px; margin: 0 auto; }
+
+    .section-label {
+      display: block;
+      color: var(--gold);
+      font-size: 0.7rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      margin-bottom: 0.7rem;
+    }
+
+    .section-title {
+      font-size: clamp(1.5rem, 2.8vw, 2.2rem);
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 1.2rem;
+    }
+    .section-title.light { color: var(--white); }
+
+    .divider {
+      width: 44px; height: 3px;
+      background: var(--gold);
+      margin-bottom: 3rem;
+      border-radius: 2px;
+    }
+    .divider.center { margin-left: auto; margin-right: auto; }
+
+    /* ── PRESIDENT MESSAGE ── */
+    #message { background: var(--off-white); }
+
+    .message-inner {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .message-portrait {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: sticky;
+      top: 90px;
+    }
+
+    .portrait-circle {
+      width: 150px; height: 150px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--navy), var(--navy-light));
+      border: 3px solid var(--gold);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.1rem;
+    }
+
+    .portrait-kanji {
+      font-size: 2.8rem;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: -0.05em;
+    }
+
+    .portrait-name {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--navy);
+    }
+
+    .portrait-role {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      margin-top: 4px;
+      line-height: 1.5;
+    }
+
+    .message-body p {
+      color: var(--text-mid);
+      margin-bottom: 1.2rem;
+      font-size: 0.97rem;
+      line-height: 1.95;
+    }
+
+    .message-sig {
+      margin-top: 2rem;
+      font-size: 0.83rem;
+      color: var(--text-mid);
+      border-top: 1px solid rgba(0,0,0,0.1);
+      padding-top: 1.2rem;
+    }
+
+    /* ── GROUP COMPANIES ── */
+    #group { background: var(--off-white); }
+
+    .section-header-center {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .companies-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.4rem;
+    }
+
+    .company-card {
+      background: var(--white);
+      border: 1px solid rgba(26,58,46,0.1);
+      border-radius: 10px;
+      padding: 2rem 2rem 1.8rem;
+      transition: all 0.28s;
+      box-shadow: 0 2px 12px rgba(26,58,46,0.05);
+    }
+    .company-card:hover {
+      border-color: var(--gold);
+      box-shadow: 0 8px 28px rgba(26,58,46,0.1);
+      transform: translateY(-5px);
+    }
+
+    .co-num {
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.18em;
+      opacity: 0.75;
+      margin-bottom: 0.6rem;
+    }
+
+    .co-name {
+      font-size: 1.1rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    .co-est {
+      font-size: 0.78rem;
+      color: var(--text-mid);
+      margin-bottom: 0.9rem;
+    }
+
+    .co-desc {
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.75;
+    }
+
+    .co-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 1.2rem;
+    }
+
+    .tag {
+      background: rgba(26,58,46,0.07);
+      color: var(--navy);
+      padding: 3px 11px;
+      border-radius: 12px;
+      font-size: 0.7rem;
+      letter-spacing: 0.04em;
+    }
+
+    /* ── BUSINESS ── */
+    #business { background: var(--white); }
+
+    .business-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .biz-card {
+      text-align: center;
+      padding: 2.5rem 1.8rem;
+      border-radius: 10px;
+      background: var(--off-white);
+      border-top: 3px solid var(--gold);
+      transition: transform 0.25s;
+    }
+    .biz-card:hover { transform: translateY(-5px); }
+
+    .biz-icon {
+      width: 64px; height: 64px;
+      border-radius: 50%;
+      background: var(--navy);
+      margin: 0 auto 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .biz-icon svg { width: 26px; height: 26px; }
+
+    .biz-title {
+      font-size: 1.05rem;
+      color: var(--navy);
+      font-weight: 700;
+      margin-bottom: 0.9rem;
+    }
+
+    .biz-desc {
+      font-size: 0.86rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    /* ── BRANDS ── */
+    #brands { background: var(--off-white); }
+
+    .brands-grid {
+      max-width: 1120px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.4rem;
+    }
+
+    .brand-card {
+      background: var(--white);
+      border-radius: 10px;
+      padding: 2rem 1.4rem;
+      text-align: center;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.05);
+      transition: all 0.28s;
+    }
+    .brand-card:hover {
+      box-shadow: 0 8px 28px rgba(26,58,46,0.13);
+      transform: translateY(-5px);
+    }
+
+    .brand-icon {
+      width: 100%; height: 52px;
+      border-radius: 100px;
+      background: var(--navy);
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      color: var(--gold);
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      line-height: 1;
+      text-align: center;
+      white-space: nowrap;
+    }
+
+    .brand-name {
+      font-size: 0.92rem;
+      font-weight: 700;
+      color: var(--navy);
+      margin-bottom: 0.4rem;
+      white-space: nowrap;
+    }
+
+    .brand-cat {
+      font-size: 0.74rem;
+      color: var(--text-mid);
+      line-height: 1.5;
+    }
+
+    /* ── CONTACT ── */
+    #contact {
+      background: var(--off-white);
+      text-align: center;
+    }
+
+    .contact-inner {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+
+    .contact-map {
+      width: 100%;
+      aspect-ratio: 16/7;
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 0 0 2.5rem;
+      border: 1px solid rgba(196,168,130,0.25);
+    }
+    .contact-map iframe {
+      width: 100%; height: 100%;
+      border: none;
+      display: block;
+    }
+
+    .contact-desc {
+      color: var(--text-mid);
+      font-size: 0.9rem;
+      margin: 0 0 2.5rem;
+    }
+
+    .contact-items {
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+    }
+
+    .contact-row {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.8rem;
+      color: var(--text-dark);
+      font-size: 0.97rem;
+    }
+
+    .contact-row svg {
+      width: 18px; height: 18px;
+      stroke: var(--navy);
+      flex-shrink: 0;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--navy);
+      padding: 14px 44px;
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: 0.93rem;
+      text-decoration: none;
+      letter-spacing: 0.05em;
+      transition: background 0.2s, transform 0.2s;
+    }
+    .contact-btn:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #091a12;
+      padding: 3rem 6%;
+      text-align: center;
+    }
+
+    .footer-logo {
+      display: block;
+      color: var(--gold);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      margin-bottom: 1.4rem;
+    }
+
+    .footer-nav {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1.8rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-nav a {
+      color: rgba(255,255,255,0.38);
+      text-decoration: none;
+      font-size: 0.76rem;
+      transition: color 0.2s;
+    }
+    .footer-nav a:hover { color: var(--gold); }
+
+    .footer-copy {
+      color: rgba(255,255,255,0.3);
+      font-size: 0.74rem;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      nav { display: none; }
+      .hamburger { display: flex; }
+      .companies-grid { grid-template-columns: 1fr; }
+      .business-grid { grid-template-columns: 1fr; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+      .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .message-inner { grid-template-columns: 1fr; }
+      .message-portrait { position: static; flex-direction: row; text-align: left; gap: 1.5rem; margin-bottom: 2.5rem; }
+      .portrait-circle { width: 90px; height: 90px; flex-shrink: 0; }
+      .portrait-kanji { font-size: 1.8rem; }
+    }
+
+    @media (max-width: 560px) {
+      section { padding: 72px 5%; }
+      .brands-grid { grid-template-columns: repeat(2, 1fr); }
+      .hero-title { font-size: 1.9rem; }
+      .message-portrait { flex-direction: column; align-items: center; text-align: center; }
+      .map-block { aspect-ratio: 3/2; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header id="header">
+  <a href="#hero" class="logo">
+    <svg class="logo-mark" viewBox="0 0 44 44" xmlns="http://www.w3.org/2000/svg">
+      <!-- 印章背景 -->
+      <rect width="44" height="44" rx="3" fill="#1a3a2e"/>
+      <!-- 外枠 -->
+      <rect x="1.5" y="1.5" width="41" height="41" rx="2.5" fill="none" stroke="#c4a882" stroke-width="2"/>
+      <!-- 内枠 -->
+      <rect x="4.5" y="4.5" width="35" height="35" rx="1.5" fill="none" stroke="#c4a882" stroke-width="0.8"/>
+      <!-- 篆字「東」 -->
+      <!-- 上横画 -->
+      <line x1="13" y1="10" x2="31" y2="10" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- 縦画（通し） -->
+      <line x1="22" y1="10" x2="22" y2="35" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- 楕円（日部） -->
+      <ellipse cx="22" cy="19.5" rx="7" ry="5" fill="#1a3a2e" stroke="#c4a882" stroke-width="2"/>
+      <!-- 中横画（楕円を貫く） -->
+      <line x1="13" y1="19.5" x2="31" y2="19.5" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- 縦画（楕円内・再描画） -->
+      <line x1="22" y1="14" x2="22" y2="25" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round"/>
+      <!-- 左払い -->
+      <path d="M22 28 Q16.5 31.5 13 35" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+      <!-- 右払い -->
+      <path d="M22 28 Q27.5 31.5 31 35" stroke="#c4a882" stroke-width="2.2" stroke-linecap="round" fill="none"/>
+    </svg>
+    <span id="logo-text">東瀛華族グループ</span>
+  </a>
+
+  <nav>
+    <a href="#group"    data-i18n="nav_group">グループ会社</a>
+    <a href="#business" data-i18n="nav_business">事業内容</a>
+    <a href="#brands"   data-i18n="nav_brands">ブランド</a>
+    <a href="#contact"  data-i18n="nav_contact">お問い合わせ</a>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('ja')">JP</button>
+      <button class="lang-btn"        onclick="setLang('en')">EN</button>
+      <button class="lang-btn"        onclick="setLang('zh')">中</button>
+    </div>
+  </nav>
+
+  <button class="hamburger" id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</header>
+
+<!-- ── MOBILE MENU ── -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#group"    data-i18n="nav_group"    onclick="closeMenu()">グループ会社</a>
+  <a href="#business" data-i18n="nav_business" onclick="closeMenu()">事業内容</a>
+  <a href="#brands"   data-i18n="nav_brands"   onclick="closeMenu()">ブランド</a>
+  <a href="#contact"  data-i18n="nav_contact"  onclick="closeMenu()">お問い合わせ</a>
+  <div class="mobile-lang">
+    <button class="lang-btn active" onclick="setLang('ja')">JP</button>
+    <button class="lang-btn"        onclick="setLang('en')">EN</button>
+    <button class="lang-btn"        onclick="setLang('zh')">中</button>
+  </div>
+</div>
+
+<!-- ── HERO ── -->
+<section id="hero">
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1558240077-e33b10a16a64?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1542051841857-5f90071e7989?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1592499494890-da4507c0c7d8?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1562461212-4906e9bb70ad?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-slide" style="background-image:url('https://images.unsplash.com/photo-1560257934-c627e08b0b17?w=1600&q=80&fit=crop')"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge" data-i18n="hero_badge">TOEIKAZOKU GROUP</div>
+    <h1 class="hero-title" data-i18n="hero_title">越境から、<span>未来へ</span></h1>
+    <p class="hero-sub" data-i18n="hero_sub">コマース・ホスピタリティ・テクノロジー</p>
+    <a href="#message" class="hero-scroll" data-i18n="hero_scroll">SCROLL</a>
+  </div>
+</section>
+
+<!-- ── PRESIDENT MESSAGE ── -->
+<section id="message">
+  <div class="message-inner">
+    <div class="message-portrait">
+      <div class="portrait-name" data-i18n="pres_name">許 征</div>
+      <div class="portrait-role" data-i18n="pres_role">代表取締役 CEO<br>株式会社東瀛華族</div>
+    </div>
+
+    <div class="message-body">
+      <span class="section-label" data-i18n="msg_label">MESSAGE</span>
+      <h2 class="section-title" data-i18n="msg_heading">代表致辞</h2>
+      <div class="divider"></div>
+      <p data-i18n="msg_p1">2016年の創業以来、私たちは日本と中国・アジアをつなぐビジネスを展開してまいりました。越境ECを主軸に、民宿事業やAI分野へと着実に事業領域を拡大し、グローバルな視点で新たな価値の創造に挑み続けています。</p>
+      <p data-i18n="msg_p2">東瀛華族グループは、文化の壁を越えた事業開発と、誠実で透明性の高い経営を理念としています。お客様・パートナー・社会のすべてに対して、最高の価値を届けることが私たちの使命です。</p>
+      <p data-i18n="msg_p3">これからも変化の時代に柔軟に対応しながら、持続的な成長を目指してまいります。引き続きのご支援を、何卒よろしくお願い申し上げます。</p>
+      <div class="message-sig" data-i18n="msg_sig">株式会社東瀛華族　代表取締役　許 征</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── GROUP COMPANIES ── -->
+<section id="group">
+  <div class="section-header-center">
+    <span class="section-label" data-i18n="grp_label">GROUP COMPANIES</span>
+    <h2 class="section-title" data-i18n="grp_heading">グループ会社</h2>
+    <div class="divider center"></div>
+  </div>
+  <div class="companies-grid">
+
+    <div class="company-card">
+      <div class="co-num">01</div>
+      <div class="co-name" data-i18n="co1_name">株式会社 東瀛華族</div>
+      <div class="co-est"  data-i18n="co1_est">設立 2016年11月　東京都立川市</div>
+      <div class="co-desc" data-i18n="co1_desc">グループの中核企業。越境ECを主軸に、日本・中国間のサプライチェーンを構築。代表取締役 許征</div>
+      <div class="co-tags">
+        <span class="tag">EC</span>
+        <span class="tag" data-i18n="tag_core">主力事業会社</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="co-num">02</div>
+      <div class="co-name">株式会社 ＷＷＪ</div>
+      <div class="co-est"  data-i18n="co2_est">設立 2019年4月　東京都立川市</div>
+      <div class="co-desc" data-i18n="co2_desc">ECと民宿事業を展開する業務拡張会社。東京都内に複数の民宿施設「W-inns」を運営。代表取締役 吴燕平</div>
+      <div class="co-tags">
+        <span class="tag">EC</span>
+        <span class="tag" data-i18n="tag_minpaku">民宿</span>
+      </div>
+    </div>
+
+    <div class="company-card">
+      <div class="co-num">03</div>
+      <div class="co-name">株式会社 WELLSHARE</div>
+      <div class="co-est"  data-i18n="co3_est">設立 2026年2月　東京都立川市</div>
+      <div class="co-desc" data-i18n="co3_desc">AI事業を重点領域とする新事業プラットフォーム。テクノロジーを活用した次世代ビジネスの創出を推進。</div>
+      <div class="co-tags">
+        <span class="tag">AI</span>
+        <span class="tag">EC</span>
+        <span class="tag" data-i18n="tag_new">新設</span>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+<!-- ── BUSINESS ── -->
+<section id="business">
+  <div class="container">
+    <div class="section-header-center">
+      <span class="section-label" data-i18n="biz_label">BUSINESS</span>
+      <h2 class="section-title"   data-i18n="biz_heading">事業内容</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="business-grid">
+
+      <div class="biz-card">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4a882" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <path d="M16 10a4 4 0 01-8 0"/>
+          </svg>
+        </div>
+        <h3 class="biz-title" data-i18n="biz1_title">電子商取引</h3>
+        <p  class="biz-desc"  data-i18n="biz1_desc">Amazon・楽天・Yahoo!ショッピングなど主要ECプラットフォームにて、化粧品・日用品・スマートフォン周辺機器等を販売。日中間の商流を最大化するサプライチェーンを構築。</p>
+      </div>
+
+      <div class="biz-card">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4a882" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="20" x2="12" y2="10"/>
+            <line x1="18" y1="20" x2="18" y2="4"/>
+            <line x1="6"  y1="20" x2="6"  y2="16"/>
+          </svg>
+        </div>
+        <h3 class="biz-title" data-i18n="biz2_title">投資コンサルティング</h3>
+        <p  class="biz-desc"  data-i18n="biz2_desc">日本・中国・中東を結ぶ国際的な視点で投資機会の発掘と事業開発を支援。ドバイ法人を通じたグローバル展開により、多角的な投資ポートフォリオを構築。</p>
+      </div>
+
+      <div class="biz-card">
+        <div class="biz-icon">
+          <svg viewBox="0 0 24 24" fill="none" stroke="#c4a882" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </div>
+        <h3 class="biz-title" data-i18n="biz3_title">民宿事業</h3>
+        <p  class="biz-desc"  data-i18n="biz3_desc">東京都内の複数拠点にて民泊施設「W-inns」を運営。インバウンド旅行者を中心に、快適で文化的な滞在体験を提供。</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── BRANDS ── -->
+<section id="brands">
+  <div class="container">
+    <div class="section-header-center">
+      <span class="section-label" data-i18n="brand_label">BRANDS</span>
+      <h2 class="section-title"   data-i18n="brand_heading">ブランド</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="brands-grid">
+
+      <div class="brand-card">
+        <div class="brand-icon">WIN-WIN LIFE</div>
+        <div class="brand-name">WIN-WIN LIFE</div>
+        <div class="brand-cat" data-i18n="br1_cat">電子商取引・メインブランド</div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-icon">RURILIFE</div>
+        <div class="brand-name">RURILIFE</div>
+        <div class="brand-cat" data-i18n="br2_cat">スマートフォン周辺機器・自社商品</div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-icon" style="font-style:italic; letter-spacing:0;">rurilife</div>
+        <div class="brand-name">rurilife</div>
+        <div class="brand-cat" data-i18n="br3_cat">ネイル・ビューティー</div>
+      </div>
+
+      <div class="brand-card">
+        <div class="brand-icon">W-inns</div>
+        <div class="brand-name">W-inns</div>
+        <div class="brand-cat" data-i18n="br4_cat">民宿・ホスピタリティ</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <div class="contact-inner">
+    <span class="section-label" data-i18n="ct_label">CONTACT</span>
+    <h2 class="section-title" data-i18n="ct_heading">お問い合わせ</h2>
+    <div class="divider center"></div>
+    <p class="contact-desc" data-i18n="ct_desc">事業に関するお問い合わせ・取材・提携のご相談など、お気軽にご連絡ください。</p>
+    <div class="contact-items">
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6 19.79 19.79 0 01-3.07-8.67A2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+        </svg>
+        <span>042-808-8061</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+          <polyline points="22,6 12,13 2,6"/>
+        </svg>
+        <span>info@toeikazoku.com</span>
+      </div>
+      <div class="contact-row">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+          <circle cx="12" cy="10" r="3"/>
+        </svg>
+        <span>〒190-0013 東京都立川市富士見町4-7-28 伸幸ビル204</span>
+      </div>
+    </div>
+    <div class="contact-map">
+      <iframe src="https://maps.google.com/maps?q=東京都立川市富士見町4-7-28+伸幸ビル204&output=embed&hl=ja" allowfullscreen loading="lazy"></iframe>
+    </div>
+    <a href="mailto:info@toeikazoku.com" class="contact-btn" data-i18n="ct_btn">メールでお問い合わせ</a>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <span class="footer-logo">東瀛華族グループ ｜ TOEIKAZOKU GROUP</span>
+  <div class="footer-nav">
+    <a href="#group"    data-i18n="nav_group">グループ会社</a>
+    <a href="#business" data-i18n="nav_business">事業内容</a>
+    <a href="#brands"   data-i18n="nav_brands">ブランド</a>
+    <a href="#contact"  data-i18n="nav_contact">お問い合わせ</a>
+  </div>
+  <p class="footer-copy">© <span id="year"></span> 株式会社東瀛華族　All Rights Reserved.</p>
+</footer>
+
+<script>
+/* ── TRANSLATIONS ── */
+const T = {
+  ja: {
+    nav_group:    "グループ会社",
+    nav_business: "事業内容",
+    nav_brands:   "ブランド",
+    nav_contact:  "お問い合わせ",
+    hero_badge:   "TOEIKAZOKU GROUP",
+    hero_title:   "越境から、<span>未来へ</span>",
+    hero_sub:     "コマース・ホスピタリティ・テクノロジー",
+    hero_scroll:  "SCROLL",
+    pres_name:    "許 征",
+    pres_role:    "代表取締役 CEO<br>株式会社東瀛華族",
+    msg_label:    "MESSAGE",
+    msg_heading:  "代表致辞",
+    msg_p1:       "2016年の創業以来、私たちは日本と中国・アジアをつなぐビジネスを展開してまいりました。越境ECを主軸に、民宿事業やAI分野へと着実に事業領域を拡大し、グローバルな視点で新たな価値の創造に挑み続けています。",
+    msg_p2:       "東瀛華族グループは、文化の壁を越えた事業開発と、誠実で透明性の高い経営を理念としています。お客様・パートナー・社会のすべてに対して、最高の価値を届けることが私たちの使命です。",
+    msg_p3:       "これからも変化の時代に柔軟に対応しながら、持続的な成長を目指してまいります。引き続きのご支援を、何卒よろしくお願い申し上げます。",
+    msg_sig:      "株式会社東瀛華族　代表取締役　許 征",
+    grp_label:    "GROUP COMPANIES",
+    grp_heading:  "グループ会社",
+    co1_name:     "株式会社 東瀛華族",
+    co1_est:      "設立 2016年11月　東京都立川市",
+    co1_desc:     "グループの中核企業。越境ECを主軸に、日本・中国間のサプライチェーンを構築。代表取締役 許征",
+    co2_est:      "設立 2019年4月　東京都立川市",
+    co2_desc:     "ECと民宿事業を展開する業務拡張会社。東京都内に複数の民宿施設「W-inns」を運営。代表取締役 吴燕平",
+    co3_est:      "設立 2026年2月　東京都立川市",
+    co3_desc:     "AI事業を重点領域とする新事業プラットフォーム。テクノロジーを活用した次世代ビジネスの創出を推進。",
+    tag_core:     "主力事業会社",
+    tag_minpaku:  "民宿",
+    tag_new:      "新設",
+    biz_label:    "BUSINESS",
+    biz_heading:  "事業内容",
+    biz1_title:   "電子商取引",
+    biz1_desc:    "Amazon・楽天・Yahoo!ショッピングなど主要ECプラットフォームにて、化粧品・日用品・スマートフォン周辺機器等を販売。日中間の商流を最大化するサプライチェーンを構築。",
+    biz2_title:   "投資コンサルティング",
+    biz2_desc:    "日本とアジアを結ぶ国際的な視点で、投資機会の発掘と事業開発を支援します。",
+    biz3_title:   "民宿事業",
+    biz3_desc:    "東京都内の複数拠点にて民泊施設「W-inns」を運営。インバウンド旅行者を中心に、快適で文化的な滞在体験を提供。",
+    brand_label:  "BRANDS",
+    brand_heading:"ブランド",
+    br1_cat:      "電子商取引・メインブランド",
+    br2_cat:      "スマートフォン周辺機器・自社商品",
+    br3_cat:      "ネイル・ビューティー",
+    br4_cat:      "民宿・ホスピタリティ",
+    ct_label:     "CONTACT",
+    ct_heading:   "お問い合わせ",
+    ct_desc:      "事業に関するお問い合わせ・取材・提携のご相談など、お気軽にご連絡ください。",
+    ct_btn:       "メールでお問い合わせ",
+  },
+  en: {
+    nav_group:    "Companies",
+    nav_business: "Business",
+    nav_brands:   "Brands",
+    nav_contact:  "Contact",
+    hero_badge:   "TOEIKAZOKU GROUP",
+    hero_title:   "Cross-border,<br><span>Into the Future</span>",
+    hero_sub:     "Commerce · Hospitality · Technology",
+    hero_scroll:  "SCROLL",
+    pres_name:    "Xu Zheng",
+    pres_role:    "President &amp; CEO<br>Toeikazoku Co., Ltd.",
+    msg_label:    "MESSAGE",
+    msg_heading:  "From the President",
+    msg_p1:       "Since our founding in 2016, Toeikazoku Group has been building bridges between Japan, China, and Asia. With cross-border e-commerce as our foundation, we have steadily expanded into hospitality and AI, continuously creating new value on the global stage.",
+    msg_p2:       "Our guiding principles are cross-cultural business development and transparent, ethical management. Our mission is to deliver outstanding value to every customer, partner, and community we serve.",
+    msg_p3:       "We remain committed to embracing change and achieving sustainable growth. We sincerely appreciate your continued trust and support.",
+    msg_sig:      "Toeikazoku Co., Ltd. — President &amp; CEO, Xu Zheng",
+    grp_label:    "GROUP COMPANIES",
+    grp_heading:  "Our Companies",
+    co1_name:     "Toeikazoku Co., Ltd.",
+    co1_est:      "Est. November 2016 · Tachikawa, Tokyo",
+    co1_desc:     "The group's core company, driving cross-border e-commerce and building supply chains between Japan and China. President: Xu Zheng",
+    co2_est:      "Est. April 2019 · Tachikawa, Tokyo",
+    co2_desc:     "Business expansion company operating EC and vacation rental services. Manages multiple W-inns properties across Tokyo. CEO: Wu Yanping",
+    co3_est:      "Est. February 2026 · Tachikawa, Tokyo",
+    co3_desc:     "A new-venture platform focused on AI business. Driving next-generation business creation through technology.",
+    tag_core:     "Core Company",
+    tag_minpaku:  "Vacation Rental",
+    tag_new:      "New",
+    biz_label:    "BUSINESS",
+    biz_heading:  "What We Do",
+    biz1_title:   "E-Commerce",
+    biz1_desc:    "We sell cosmetics, daily goods, and smartphone accessories across Amazon, Rakuten, and Yahoo! Shopping, backed by optimised supply chains linking Japan and China.",
+    biz2_title:   "Investment Consulting",
+    biz2_desc:    "With an international perspective connecting Japan and Asia, we identify investment opportunities and support business development.",
+    biz3_title:   "Vacation Rental",
+    biz3_desc:    "We operate the W-inns brand at multiple Tokyo locations, offering comfortable, culturally rich stays for inbound visitors.",
+    brand_label:  "BRANDS",
+    brand_heading:"Our Brands",
+    br1_cat:      "E-Commerce · Main Brand",
+    br2_cat:      "Smartphone Accessories · Own Products",
+    br3_cat:      "Nail · Beauty",
+    br4_cat:      "Vacation Rental · Hospitality",
+    ct_label:     "CONTACT",
+    ct_heading:   "Get in Touch",
+    ct_desc:      "For business inquiries, media, or partnership opportunities, please feel free to reach out.",
+    ct_btn:       "Send an Email",
+  },
+  zh: {
+    nav_group:    "集团公司",
+    nav_business: "事业内容",
+    nav_brands:   "品牌",
+    nav_contact:  "联系我们",
+    hero_badge:   "东瀛华族集团",
+    hero_title:   "跨越边界，<span>迈向未来</span>",
+    hero_sub:     "电商 · 民宿 · 科技",
+    hero_scroll:  "向下滚动",
+    pres_name:    "许 征",
+    pres_role:    "代表取締役 CEO<br>株式会社東瀛華族",
+    msg_label:    "致辞",
+    msg_heading:  "代表致辞",
+    msg_p1:       "自2016年创业以来，东瀛华族集团一直致力于连接日本与中国、亚洲的商业往来。以跨境电商为核心，稳步拓展民宿事业和AI新领域，以全球视野持续探索新的价值创造。",
+    msg_p2:       "东瀛华族集团以跨文化的事业开发与诚实透明的经营为理念，我们的使命是为每一位客户、合作伙伴和社会，持续提供最高价值。",
+    msg_p3:       "未来，我们将继续灵活应对时代变化，追求可持续增长。感谢您一直以来的支持与信任。",
+    msg_sig:      "株式会社東瀛華族　代表取締役　许 征",
+    grp_label:    "集团公司",
+    grp_heading:  "集团公司",
+    co1_name:     "株式会社 東瀛華族",
+    co1_est:      "创立 2016年11月　东京都立川市",
+    co1_desc:     "集团核心企业，以跨境电商为主轴，构建中日间供应链体系。代表取締役 许征",
+    co2_est:      "创立 2019年4月　东京都立川市",
+    co2_desc:     "负责电商及民宿事业拓展，在东京都内运营多处民宿设施「W-inns」。代表取締役 吴燕平",
+    co3_est:      "创立 2026年2月　东京都立川市",
+    co3_desc:     "以AI事业为重点方向的新业务平台，推动以技术为核心的下一代商业模式创新。",
+    tag_core:     "核心企业",
+    tag_minpaku:  "民宿",
+    tag_new:      "新设",
+    biz_label:    "事业内容",
+    biz_heading:  "事业内容",
+    biz1_title:   "跨境电商",
+    biz1_desc:    "在亚马逊、乐天、Yahoo!购物等主要电商平台销售化妆品、日用品及手机周边产品，构建最优中日商流供应链体系。",
+    biz2_title:   "投资咨询",
+    biz2_desc:    "以连接日本与亚洲的国际视野，发掘投资机会，支持业务开发。",
+    biz3_title:   "民宿事业",
+    biz3_desc:    "在东京都内多处运营民宿品牌「W-inns」，为以海外游客为主的旅客提供舒适、富有文化氛围的住宿体验。",
+    brand_label:  "品牌",
+    brand_heading:"旗下品牌",
+    br1_cat:      "电商主力品牌",
+    br2_cat:      "手机周边 · 自有商品",
+    br3_cat:      "美甲 · 美容",
+    br4_cat:      "民宿 · 酒店服务",
+    ct_label:     "联系我们",
+    ct_heading:   "联系我们",
+    ct_desc:      "如有业务咨询、采访或合作事宜，欢迎随时与我们联系。",
+    ct_btn:       "发送邮件",
+  }
+};
+
+/* ── LANGUAGE SWITCH ── */
+let lang = 'ja';
+
+function setLang(l) {
+  lang = l;
+  document.documentElement.lang = l === 'en' ? 'en' : l === 'zh' ? 'zh-Hans' : 'ja';
+  document.title = l === 'en'
+    ? 'Toeikazoku Group | 東瀛華族グループ'
+    : l === 'zh'
+    ? '东瀛华族集团 | Toeikazoku Group'
+    : '東瀛華族グループ | Toeikazoku Group';
+
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const key = el.getAttribute('data-i18n');
+    if (T[l][key] !== undefined) el.innerHTML = T[l][key];
+  });
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    const map = { JP: 'ja', EN: 'en', '中': 'zh' };
+    btn.classList.toggle('active', map[btn.textContent] === l);
+  });
+}
+
+/* ── HAMBURGER ── */
+const ham  = document.getElementById('hamburger');
+const menu = document.getElementById('mobileMenu');
+
+ham.addEventListener('click', () => menu.classList.toggle('open'));
+
+function closeMenu() { menu.classList.remove('open'); }
+
+document.addEventListener('click', e => {
+  if (!ham.contains(e.target) && !menu.contains(e.target))
+    menu.classList.remove('open');
+});
+
+/* ── HEADER SHADOW ON SCROLL ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('header').style.boxShadow =
+    window.scrollY > 40 ? '0 4px 24px rgba(0,0,0,0.32)' : 'none';
+});
+
+/* ── FOOTER YEAR ── */
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* ── HERO SLIDESHOW ── */
+const slides = document.querySelectorAll('.hero-slide');
+let slideIdx = 0;
+slides[0].classList.add('active');
+setInterval(() => {
+  slides[slideIdx].classList.remove('active');
+  slideIdx = (slideIdx + 1) % slides.length;
+  slides[slideIdx].classList.add('active');
+}, 5000);
+</script>
+</body>
+</html>
